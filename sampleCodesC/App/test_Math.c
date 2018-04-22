@@ -47,6 +47,39 @@ uint8 test_Math (void){
 		printf("\t[PASS]\r");
 	}
 
+	printf("Test 5 - Max");
+	if (hdlr_Max()) {
+		printf("\t[FAIL]\r");
+		error++;
+	} else {
+		printf("\t[PASS]\r");
+	}
+
+	printf("Test 6 - Min");
+	if (hdlr_Min()) {
+		printf("\t[FAIL]\r");
+		error++;
+	} else {
+		printf("\t[PASS]\r");
+		;
+	}
+
+	printf("Test 7 - Sum");
+	if (hdlr_Sum()) {
+		printf("\t[FAIL]\r");
+		error++;
+	} else {
+		printf("\t[PASS]\r");
+	}
+
+	printf("Test 8 - Sub");
+	if (hdlr_Sub()) {
+		printf("\t[FAIL]\r");
+		error++;
+	} else {
+		printf("\t[PASS]\r");
+	}
+
 	if (error >= 1) {
 		return FAIL;
 	}
@@ -59,8 +92,8 @@ uint8 use_Sum (void){
 	uint8 b = 43;
 	uint8 c = 0;
 
-	u8ptrfn_t u8CallbckCal1 = u8fn_sum;
-	c = u8CallbckCal1(a, b);
+	u8ptrfn_t u8CallbckCal = u8fn_sum;
+	c = u8CallbckCal(a, b);
 
 	if (53 == c)
 		return PASS;
@@ -73,8 +106,8 @@ uint8 use_Sub (void){
 	uint8 b = 43;
 	uint8 c = 0;
 
-	u8ptrfn_t u8CallbckCal2 = u8fn_sub;
-	c = u8CallbckCal2(b, a);
+	u8ptrfn_t u8CallbckCal = u8fn_sub;
+	c = u8CallbckCal(b, a);
 
 	if (33 == c)
 		return PASS;
@@ -87,8 +120,8 @@ uint8 use_Mul (void){
 	uint8 b = 4;
 	uint8 c = 0;
 
-	u8ptrfn_t u8CallbckCal3 = u8fn_mul;
-	c = u8CallbckCal3(a, b);
+	u8ptrfn_t u8CallbckCal = u8fn_mul;
+	c = u8CallbckCal(a, b);
 
 	if (28 == c)
 		return PASS;
@@ -101,10 +134,62 @@ uint8 use_Div (void){
 	uint8 b = 5;
 	uint8 c = 0;
 
-	u8ptrfn_t u8CallbckCal4 = u8fn_div;
-	c = u8CallbckCal4(a, b);
+	u8ptrfn_t u8CallbckCal = u8fn_div;
+	c = u8CallbckCal(a, b);
 
 	if (2 == c)
+		return PASS;
+	else
+		return FAIL;
+}
+
+uint8 hdlr_Max (void){
+	uint8 a = 10;
+	uint8 b = 43;
+	uint8 c = 0;
+
+	c = u8fn_calHandler(a, b, u8fn_max);
+
+	if (43 == c)
+		return PASS;
+	else
+		return FAIL;
+}
+
+uint8 hdlr_Min (void){
+	uint8 a = 10;
+	uint8 b = 43;
+	uint8 c = 0;
+
+	c = u8fn_calHandler(b, a, u8fn_min);
+
+	if (10 == c)
+		return PASS;
+	else
+		return FAIL;
+}
+
+uint8 hdlr_Sum (void){
+	uint8 a = 7;
+	uint8 b = 4;
+	uint8 c = 0;
+
+	c = u8fn_calHandler(a, b, u8fn_sum);
+
+	if (11 == c)
+		return PASS;
+	else
+		return FAIL;
+}
+
+uint8 hdlr_Sub (void){
+	uint8 a = 10;
+	uint8 b = 4;
+	uint8 c = 0;
+
+	c = u8fn_calHandler(a, b, u8fn_sub);
+
+	if (6 == c)
 		return PASS;
 	else
 		return FAIL;
