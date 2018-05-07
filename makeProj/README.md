@@ -112,5 +112,6 @@ clean:
 ### Warnings
 
 Common error in make files is using **spaces instead of tabs** at the beginning of command lines.
+
 _It's recomendded use the **Show Whitespaces Characters** option_
 Also you can use Outline view to spot errors.
